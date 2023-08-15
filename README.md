@@ -32,4 +32,27 @@ nano app/settings.py
 ###docker run --name django_db -e POSTGRES_PASSWORD=<password> -p 5432:5432 -v C:\Users\wrx\work\tmp\pgdata:/var/lib/postgresql/data postgres
 
 
+_______________________________________________________
+1. docker network create my-network
+2. docker run -d --name django_app --network my-network -p 8000:8000 -it python bash
+3. docker run -d --name postgres-container --network my-network -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=lab -e POSTGRES_HOST_AUTH_METHOD=md5 postgres
+4. Захожу в постгрес docker exec -it <айди контейнера> psql -U postgres
+5. Создаю там бд create database mydb
+6. пип инсталлы
+7. Захожу в джанго
+8. Создаю проект
+9. НАстройкиDATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydb',
+        'USER': 'myuser',
+        'PASSWORD': 'mypassword',
+        'HOST': 'postgres-container',  # Имя контейнера PostgreSQL
+        'PORT': '5432',
+    }
+}
+10. Миграции
+11. перезапуск докеров
+12. запуск через ./manage.py runserver 0.0.0.0:8000
+
 

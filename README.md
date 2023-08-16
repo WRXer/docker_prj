@@ -38,21 +38,24 @@ _______________________________________________________
 3. docker run -d --name postgres-container --network my-network -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=lab -e POSTGRES_HOST_AUTH_METHOD=md5 postgres
 4. Захожу в постгрес docker exec -it <айди контейнера> psql -U postgres
 5. Создаю там бд create database mydb
-6. пип инсталлы
-7. Захожу в джанго
+6. Захожу в джанго
+7.  пип инсталлы + nano
 8. Создаю проект
-9. НАстройкиDATABASES = {
+9. НАстройки
+   ALLOWED_HOSTS = ['127.0.0.1']
+   
+   DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mydb',
-        'USER': 'myuser',
-        'PASSWORD': 'mypassword',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'postgres-container',  # Имя контейнера PostgreSQL
         'PORT': '5432',
     }
 }
-10. Миграции
-11. перезапуск докеров
-12. запуск через ./manage.py runserver 0.0.0.0:8000
+12. Миграции
+13. перезапуск докеров
+14. запуск через ./manage.py runserver 0.0.0.0:8000
 
 

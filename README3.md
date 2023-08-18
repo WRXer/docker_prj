@@ -16,27 +16,27 @@
 
 3. Создаем docker-compose.yml:
 
-  version: '3'
-
-  services:
-  
-    db:
+      version: '3'
     
-      image: postgres
+      services:
       
-      environment:
+        db:
+        
+          image: postgres
+          
+          environment:
+          
+            POSTGRES_PASSWORD: 777Nokia13
+            PGDATA: /var/lib/postgresql/data/pgdata
       
-        POSTGRES_PASSWORD: 777Nokia13
-        PGDATA: /var/lib/postgresql/data/pgdata
-  
-  
-    app:
-      build: .
-      depends_on:
-        - db
-      ports:
-        - '8000:8000'
-      command: python manage.py runserver 0.0.0.0:8000
+      
+        app:
+          build: .
+          depends_on:
+            - db
+          ports:
+            - '8000:8000'
+          command: python manage.py runserver 0.0.0.0:8000
 
 4. docker-compose build # в терминале приложения собираем образ
 

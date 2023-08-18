@@ -19,9 +19,13 @@
   version: '3'
 
   services:
+  
     db:
+    
       image: postgres
+      
       environment:
+      
         POSTGRES_PASSWORD: 777Nokia13
         PGDATA: /var/lib/postgresql/data/pgdata
   
